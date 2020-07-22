@@ -1,0 +1,813 @@
+default:
+    formatters:
+        pretty: true
+        allure:
+            output_path: "%paths.base%/build/allure"
+
+    suites:
+        #Command Handlers
+        create_user_command_handler:
+            paths: [ "%paths.base%/tests/Behat/features/User/create-user-command.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\User\CreateCommand
+
+        device_create_command_handler:
+            paths: [ "%paths.base%/tests/Behat/features/Device/create-device-command.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Device\CreateCommand
+
+        #Report Template Command
+        report_template_create_parser:
+            paths: [ "%paths.base%/tests/Behat/features/ReportTemplate/Parser/create-report-template-parser.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ReportTemplate\Parser\CreateReportTemplateParser
+
+        report_template_create_validator:
+            paths: [ "%paths.base%/tests/Behat/features/ReportTemplate/Validator/create-report-template-validator.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ReportTemplate\Validator\CreateReportTemplateValidator
+
+        report_template_delete_validator:
+            paths: [ "%paths.base%/tests/Behat/features/ReportTemplate/Validator/delete-report-template-validator.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ReportTemplate\Validator\DeleteReportTemplateValidator
+
+        report_template_delete_parser:
+            paths: [ "%paths.base%/tests/Behat/features/ReportTemplate/Parser/delete-report-template-parser.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ReportTemplate\Parser\DeleteReportTemplateParser
+
+        report_template_duplicate_command:
+            paths: [ "%paths.base%/tests/Behat/features/ReportTemplate/duplicate-command.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ReportTemplate\DuplicateCommand
+
+        report_template_edit_parser:
+            paths: [ "%paths.base%/tests/Behat/features/ReportTemplate/Parser/edit-report-template-parser.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ReportTemplate\Parser\EditReportTemplateParser
+
+        report_template_edit_use_case:
+            paths: [ "%paths.base%/tests/Behat/features/ReportTemplate/UseCase/edit-report-template-use-case.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ReportTemplate\UseCase\EditReportTemplateUseCase
+
+        report_template_delete_use_case:
+            paths: [ "%paths.base%/tests/Behat/features/ReportTemplate/UseCase/delete-report-template-use-case.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ReportTemplate\UseCase\DeleteReportTemplateUseCase
+
+        report_template_edit_validator:
+            paths: [ "%paths.base%/tests/Behat/features/ReportTemplate/Validator/edit-report-template-validator.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ReportTemplate\Validator\EditReportTemplateValidator
+
+        get_report_template_by_id_validator:
+            paths: [ "%paths.base%/tests/Behat/features/ReportTemplate/Validator/get-by-id.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ReportTemplate\Validator\GetById
+
+        get_report_template_by_id_parser:
+            paths: [ "%paths.base%/tests/Behat/features/ReportTemplate/Parser/get-by-id.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ReportTemplate\Parser\GetById
+
+        report_template_publish_parser:
+            paths: [ "%paths.base%/tests/Behat/features/ReportTemplate/Parser/publish-report-template-parser.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ReportTemplate\Parser\PublishReportTemplateParser
+
+        report_template_publish_validator:
+            paths: [ "%paths.base%/tests/Behat/features/ReportTemplate/Validator/publish-report-template-validator.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ReportTemplate\Validator\PublishReportTemplateValidator
+
+        report_template_publish_use_case:
+            paths: [ "%paths.base%/tests/Behat/features/ReportTemplate/UseCase/publish-report-template-use-case.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ReportTemplate\UseCase\PublishReportTemplateUseCase
+
+        report_template_archive_parser:
+            paths: [ "%paths.base%/tests/Behat/features/ReportTemplate/Parser/archive-report-template-parser.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ReportTemplate\Parser\ArchiveReportTemplateParser
+
+        report_template_archive_validator:
+            paths: [ "%paths.base%/tests/Behat/features/ReportTemplate/Validator/archive-report-template-validator.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ReportTemplate\Validator\ArchiveReportTemplateValidator
+
+        report_template_archive_use_case:
+            paths: [ "%paths.base%/tests/Behat/features/ReportTemplate/UseCase/archive-report-template-use-case.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ReportTemplate\UseCase\ArchiveReportTemplateUseCase
+
+        #Report Template Query
+        report_template_get_list_by_serviceId_query:
+            paths: [ "%paths.base%/tests/Behat/features/ReportTemplate/get-list-by-serviceId-query.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ReportTemplate\GetListByServiceIdQuery
+
+        #Paragraph
+        map_style_template_entity:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Mapper/map-style-template-entity.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Mapper\StyleTemplateEntityMapper
+
+        create-root-with-device-validator:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Validator/create-root-with-device.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Validator\CreateRootWithDevice
+
+        create-root-with-device-parser:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Parser/create-root-with-device.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Parser\CreateRootWithDevice
+
+        create_root_paragraph_without_device_validator:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Validator/create-root-without-device.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Validator\CreateRootWithoutDevice
+
+        create_root_paragraph_without_device_parser:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Parser/create-root-without-device.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Parser\CreateRootWithoutDevice
+
+        create_child_paragraph_with_device_parser:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Parser/create-child-with-device.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Parser\CreateChildWithDevice
+
+        create_child_paragraph_with_device_validator:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Validator/create-child-with-device.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Validator\CreateChildWithDevice
+
+        #Paragraph Filter
+        map_paragraph_filter_entity:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Mapper/map-paragraph-filter-entity.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Mapper\MapParagraphFilterEntity
+
+        paragraph_filter_factory:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Factory/paragraph-filter-factory.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Factory\ParagraphFilterFactory
+
+        paragraph_factory:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Factory/paragraph-factory.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Factory\ParagraphFactory
+
+        #Adapter
+        get_report_template_by_id_adapter:
+            paths: [ "%paths.base%/tests/Behat/features/ReportTemplate/Adapter/get-report-template-by-id-adapter.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ReportTemplate\Adapter\GetReportTemplateByIdAdapter
+
+        paragraph_style_template_factory:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Factory/style-template-factory.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Factory\StyleTemplateFactory
+
+        paragraph_filter_query_repository:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Repository/find-paragraph-filter.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Repository\ParagraphFilterQueryRepository
+
+        paragraph_style_template_query_repository:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Repository/find-style-template.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Repository\ParagraphStyleTemplateQueryRepository
+
+        map_root_paragraph_with_device_command:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Mapper/map-root-paragraph-with-device-command.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Mapper\MapRootParagraphWithDeviceCommand
+
+        map_root_paragraph_without_device_command:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Mapper/map-root-paragraph-without-device-command.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Mapper\MapRootParagraphWithoutDeviceCommand
+
+        map_child_paragraph_with_device_command:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Mapper/map-child-paragraph-with-device-command.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Mapper\MapChildParagraphWithDeviceCommand
+
+        iterate_paragraph_position:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Service/iterate-paragraph-position.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Service\IterateParagraphPosition
+
+        iterate_paragraph_level:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Service/iterate-paragraph-level.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Service\IterateParagraphLevel
+
+        #Section
+        change_sections_position_command_repository:
+            paths: ["%paths.base%/tests/Behat/features/Section/CommandRepository/change-sections-position.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Section\CommandRepository\ChangeSectionsPosition
+
+        change_sections_position_service:
+            paths: ["%paths.base%/tests/Behat/features/Section/Service/change-sections-position.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Section\Service\ChangeSectionsPosition
+
+        change_section_position_validator:
+            paths: [ "%paths.base%/tests/Behat/features/Section/Validator/change-section-position-validator.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Section\Validator\ChangeSectionPositionValidator
+
+        edit_section_validator:
+            paths: [ "%paths.base%/tests/Behat/features/Section/Validator/edit-section-validator.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Section\Validator\EditSectionValidator
+
+        edit_section_use_case:
+            paths: [ "%paths.base%/tests/Behat/features/Section/UseCase/edit-section-use-case.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Section\UseCase\EditSectionUseCase
+
+        change_section_position_parser:
+            paths: [ "%paths.base%/tests/Behat/features/Section/Parser/change-section-position-parser.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Section\Parser\ChangeSectionPositionParser
+
+        put_file_to_storage:
+            paths: [ "%paths.base%/tests/Behat/features/Storage/put-file-to-storage.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Storage\PutFileToStorage
+
+        get_file_from_storage:
+            paths: [ "%paths.base%/tests/Behat/features/Storage/get-file-from-storage.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Storage\GetFileFromStorage
+
+        edit_section_parser:
+            paths: [ "%paths.base%/tests/Behat/features/Section/Parser/edit-section-parser.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Section\Parser\EditSectionParser
+
+        map_section_by_command:
+            paths: [ "%paths.base%/tests/Behat/features/Section/Mapper/map-section-by-command.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Section\Mapper\MapSectionByCommand
+
+        section_factory:
+            paths: [ "%paths.base%/tests/Behat/features/Section/Factory/section-factory.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Section\Factory\SectionFactory
+
+        section_position_iterator_service:
+            paths: [ "%paths.base%/tests/Behat/features/Section/Service/section-position-iterator.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Section\Service\SectionPositionIterator
+
+        create_section_use_case:
+            paths: [ "%paths.base%/tests/Behat/features/Section/UseCase/create-section-use-case.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Section\UseCase\CreateSectionUseCase
+
+        section_create_parser:
+            paths: [ "%paths.base%/tests/Behat/features/Section/Parser/create-section-parser.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Section\Parser\CreateSectionParser
+
+        section_create_validator:
+            paths: [ "%paths.base%/tests/Behat/features/Section/Validator/create-section-validator.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Section\Validator\CreateSectionValidator
+
+        section_delete_parser:
+            paths: [ "%paths.base%/tests/Behat/features/Section/Parser/delete-section-parser.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Section\Parser\DeleteSectionParser
+
+        section_delete_validator:
+            paths: [ "%paths.base%/tests/Behat/features/Section/Validator/delete-section-validator.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Section\Validator\DeleteSectionValidator
+
+        section_command_repository:
+            paths: [ "%paths.base%/tests/Behat/features/Section/CommandRepository/command-repository.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Section\CommandRepository\SectionCommandRepository
+
+        section_delete_use_case:
+            paths: [ "%paths.base%/tests/Behat/features/Section/UseCase/delete-section-use-case.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Section\UseCase\DeleteSectionUseCase
+
+        #Paragraph
+        change_paragraphs_position_command_repository:
+            paths: ["%paths.base%/tests/Behat/features/Paragraph/CommandRepository/change-paragraphs-position.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\CommandRepository\ChangeParagraphsPosition
+
+        change_paragraph_position_validator:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Validator/change-paragraph-position-validator.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Validator\ChangeParagraphPositionValidator
+
+        change_paragraph_position_parser:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Parser/change-paragraph-position-parser.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Parser\ChangeParagraphPositionParser
+
+        edit_paragraph_use_case:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/UseCase/edit-paragraph-use-case.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\UseCase\EditParagraphUseCase
+
+        root_device_group:
+            paths: [ "%paths.base%/tests/Behat/features/Device/root-device-group.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Device\RootDeviceGroup
+
+        children_device_group:
+            paths: [ "%paths.base%/tests/Behat/features/Device/children-device-group.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Device\ChildrenDeviceGroup
+        update_paragraph_command_repository:
+            paths: ["%paths.base%/tests/Behat/features/Paragraph/CommandRepository/update-paragraph.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\CommandRepository\EditParagraph
+
+        edit_paragraph_validator:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Validator/edit-paragraph-validator.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Validator\EditParagraphValidator
+
+        edit_paragraph_parser:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Parser/edit-paragraph-parser.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Parser\EditParagraphParser
+
+        adapter_group:
+            paths: [ "%paths.base%/tests/Behat/features/Device/adapter-group.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Device\AdapterGroup
+
+        group_query_repository:
+            paths: [ "%paths.base%/tests/Behat/features/Device/group-query-repository.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Device\GroupQueryRepository
+        #Device
+        device.build_tree.service:
+            paths: ["%paths.base%/tests/Behat/features/Device/Service/build-tree.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Device\Service\BuildTree
+
+        group_entity_mapper:
+            paths: [ "%paths.base%/tests/Behat/features/Device/group-entity-mapper.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Device\GroupEntityMapper
+
+        create_device_command_repository:
+            paths: [ "%paths.base%/tests/Behat/features/Device/CommandRepository/create-device.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Device\CommandRepository\CreateDevice
+
+        map_device_entity:
+            paths: [ "%paths.base%/tests/Behat/features/Device/Doctrine/Mapper/map-device.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Device\Doctrine\Mapper\MapDevice
+
+
+        root-device-parser:
+            paths: ["%paths.base%/tests/Behat/features/Device/Parser/root-device-parser.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Device\Parser\RootDeviceParser
+
+        children-device-parser:
+            paths: ["%paths.base%/tests/Behat/features/Device/Parser/children-device-parser.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Device\Parser\ChildrenDeviceParser
+
+        root-device-query:
+            paths: ["%paths.base%/tests/Behat/features/Device/root-device-query.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Device\FindByRootDeviceQuery
+
+        children-device-query:
+            paths: ["%paths.base%/tests/Behat/features/Device/children-device-query.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Device\FindByChildrenDeviceQuery
+
+        device_validator:
+            paths: [ "%paths.base%/tests/Behat/features/Device/Validator/device-validator.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Device\Validator\DeviceValidator
+
+        #Service
+        create_service_command_validator:
+            paths: ["%paths.base%/tests/Behat/features/Service/Validator/create-service-command.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Service\Validator\CreateServiceCommand
+
+        input-item-mapper:
+            paths: ["%paths.base%/tests/Behat/features/Item/Mapper/input-item-mapper.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Mapper\InputItemMapper
+
+        item-type-mapper:
+            paths: ["%paths.base%/tests/Behat/features/Item/Mapper/ItemType/item-type-entity-mapper.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Mapper\ItemType\ItemTypeEntityMapper
+
+        item-category-mapper:
+            paths: ["%paths.base%/tests/Behat/features/Item/Mapper/ItemCategory/item-category-entity-mapper.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Mapper\ItemCategory\ItemCategoryEntityMapper
+
+        item-category-query-repository:
+            paths: ["%paths.base%/tests/Behat/features/Item/Repository/ItemCategory/item-category-query-repository.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Repository\ItemCategory\ItemCategoryQueryRepository
+
+        item-category-adapter:
+            paths: ["%paths.base%/tests/Behat/features/Item/Adapter/ItemCategory/item-category-adapter.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Adapter\ItemCategory\ItemCategoryAdapter
+
+        item-category-parser:
+            paths: ["%paths.base%/tests/Behat/features/Item/Parser/ItemCategory/item-category-parser.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Parser\ItemCategory\ItemCategoryParser
+
+        input-item-parser:
+            paths: ["%paths.base%/tests/Behat/features/Item/Parser/InputItem/input-item-parser.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Parser\InputItem\InputItemParser
+
+        item-position-iterator:
+            paths: ["%paths.base%/tests/Behat/features/Item/Service/item-position-iterator.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Service\ItemPositionIterator
+
+        text-input-validator:
+            paths: ["%paths.base%/tests/Behat/features/Item/Validator/TextInput/create-text-input-validator.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Validator\TextInput\CreateTextInputValidator
+
+        text-input-mapper:
+            paths: ["%paths.base%/tests/Behat/features/Item/Mapper/InputItem/item-mapper-by-command.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Mapper\InputItem\ItemMapperByCommand
+
+        input-command-repository:
+            paths: ["%paths.base%/tests/Behat/features/Item/Repository/input-command-repository.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Repository\InputCommandRepository
+
+        picture-item-parser:
+            paths: ["%paths.base%/tests/Behat/features/Item/Parser/PictureItem/picture-item-parser.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Parser\PictureItem\PictureItemParser
+
+        update-picture-item-parser:
+            paths: ["%paths.base%/tests/Behat/features/Item/Parser/PictureItem/update-picture-item-parser.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Parser\PictureItem\UpdatePictureItemParser
+
+        picture-input-validator:
+            paths: ["%paths.base%/tests/Behat/features/Item/Validator/PictureItem/create-picture-item-validator.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Validator\PictureItem\CreatePictureItemValidator
+
+        picture-input-mapper:
+            paths: ["%paths.base%/tests/Behat/features/Item/Mapper/PictureItem/item-mapper-by-command.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Mapper\PictureItem\PictureItemMapperByCommand
+
+        update-picture-input-validator:
+            paths: ["%paths.base%/tests/Behat/features/Item/Validator/PictureItem/update-picture-item-validator.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Validator\PictureItem\UpdatePictureItemValidator
+
+        map_service_entity:
+            paths: ["%paths.base%/tests/Behat/features/Service/Doctrine/Mapper/map-service.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Service\Doctrine\Mapper\MapService
+
+        create_service_command_repository:
+            paths: [ "%paths.base%/tests/Behat/features/Service/CommandRepository/create-service.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Service\CommandRepository\CreateService
+
+        map_service_by_command:
+            paths: ["%paths.base%/tests/Behat/features/Service/Mapper/map-service-by-command.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Service\Mapper\MapServiceByCommand
+
+        service_factory:
+            paths: ["%paths.base%/tests/Behat/features/Service/Factory/service-factory.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Service\Factory\ServiceFactory
+
+        #Device-instance
+        device_instance_factory:
+            paths: [ "%paths.base%/tests/Behat/features/DeviceInstance/Factory/device-instance-factory.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\DeviceInstance\Factory\DeviceInstanceFactory
+
+        map_device_instance_by_command:
+            paths: [ "%paths.base%/tests/Behat/features/DeviceInstance/Mapper/map-device-instance-by-command.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\DeviceInstance\Mapper\MapDeviceInstanceByCommand
+
+        map_device_instance_by_model:
+            paths: [ "%paths.base%/tests/Behat/features/DeviceInstance/Mapper/map-device-instance-by-model.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\DeviceInstance\Mapper\DeviceInstanceModel
+
+        device_instance_command_repository:
+            paths: [ "%paths.base%/tests/Behat/features/DeviceInstance/CommandRepository/device-instance-command-repository.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\DeviceInstance\CommandRepository\DeviceInstanceCommandRepository
+
+        map_device_instance_from_entity_to_model:
+            paths: [ "%paths.base%/tests/Behat/features/DeviceInstance/Mapper/map-device-instance-from-entity-to-model.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\DeviceInstance\Mapper\MapDeviceInstanceFromEntityToModel
+
+        device_instance_query_repository:
+            paths: [ "%paths.base%/tests/Behat/features/DeviceInstance/QueryRepository/device-instance-query-repository.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\DeviceInstance\QueryRepository\DeviceInstanceQueryRepository
+
+        device_instance_validator:
+            paths: [ "%paths.base%/tests/Behat/features/DeviceInstance/Validator/device-instance-validator.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\DeviceInstance\Validator\DeviceInstanceValidator
+
+        create_device_instance_use_case:
+            paths: [ "%paths.base%/tests/Behat/features/DeviceInstance/UseCase/create-device-instance-use-case.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\DeviceInstance\UseCase\CreateDeviceInstanceUseCase
+
+        #ServiceInstance
+        service_instance_factory:
+            paths: [ "%paths.base%/tests/Behat/features/ServiceInstance/Factory/service-instance-factory.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ServiceInstance\Factory\ServiceInstanceFactory
+
+        list-item-parser:
+            paths: ["%paths.base%/tests/Behat/features/Item/Parser/ListItem/list-item-parser.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Parser\ListItem\ListItemParser
+
+        map_service_instance_by_command:
+            paths: [ "%paths.base%/tests/Behat/features/ServiceInstance/Mapper/map-service-instance-by-command.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ServiceInstance\Mapper\MapServiceInstanceByCommand
+
+        map_service_instance_by_model:
+            paths: [ "%paths.base%/tests/Behat/features/ServiceInstance/Mapper/map-service-instance-by-model.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ServiceInstance\Mapper\ServiceInstanceModel
+
+        service_instance_command_repository:
+            paths: [ "%paths.base%/tests/Behat/features/ServiceInstance/CommandRepository/service-instance-command-repository.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ServiceInstance\CommandRepository\ServiceInstanceCommandRepository
+
+        create_service_instance_use_case:
+            paths: [ "%paths.base%/tests/Behat/features/ServiceInstance/UseCase/create-service-instance-use-case.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ServiceInstance\UseCase\CreateServiceInstanceUseCase
+
+        list-command-repository:
+            paths: ["%paths.base%/tests/Behat/features/Item/Repository/list-item-command-repository.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Repository\ListItemCommandRepository
+
+        map_service_instance_from_entity_to_model:
+            paths: [ "%paths.base%/tests/Behat/features/ServiceInstance/Mapper/map-service-instance-from-entity-to-model.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ServiceInstance\Mapper\MapServiceInstanceFromEntityToModel
+
+
+        service_instance_query_repository:
+            paths: [ "%paths.base%/tests/Behat/features/ServiceInstance/QueryRepository/service-instance-query-repository.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ServiceInstance\QueryRepository\ServiceInstanceQueryRepository
+
+        service_instance_validator:
+            paths: [ "%paths.base%/tests/Behat/features/ServiceInstance/Validator/service-instance-validator.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\ServiceInstance\Validator\ServiceInstanceValidator
+
+        list-input-mapper:
+            paths: ["%paths.base%/tests/Behat/features/Item/Mapper/ListItem/list-item-mapper-by-command.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Mapper\ListItem\ListItemMapperByCommand
+
+        quick-select-validator:
+            paths: ["%paths.base%/tests/Behat/features/Item/Validator/QuickSelect/create-quick-select-validator.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Validator\QuickSelect\QuickSelectItemValidator
+
+        single-select-list-validator:
+            paths: ["%paths.base%/tests/Behat/features/Item/Validator/SingleSelectList/create-single-select-list-validator.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Validator\SingleSelectList\SingleSelectListItemValidator
+
+        long_text-input-validator:
+            paths: ["%paths.base%/tests/Behat/features/Item/Validator/LongTextInput/create-long-text-input-validator.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Validator\LongTextInput\LongTextInputValidator
+
+        numeric-input-validator:
+            paths: ["%paths.base%/tests/Behat/features/Item/Validator/NumericInput/create-numeric-input-validator.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Validator\NumericInput\NumericInputValidator
+
+        comments-input-validator:
+            paths: ["%paths.base%/tests/Behat/features/Item/Validator/CommentsWithDeficiencyInput/create-comments-input-validator.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Validator\CommentsWithDeficiency\CommentsInputValidator
+
+        update-item-by-command-repository:
+            paths: ["%paths.base%/tests/Behat/features/Item/Repository/update-item-by-command-repository.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Repository\UpdateItemByCommandRepository
+
+        update_input-item-parser:
+            paths: ["%paths.base%/tests/Behat/features/Item/Parser/InputItem/update-input-item-parser.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Parser\InputItem\UpdateInputItemParser
+#
+        map_device_dynamic_field_by_model:
+            paths: [ "%paths.base%/tests/Behat/features/InfoSource/Mapper/map-device-dynamic-field-by-model.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\InfoSource\Mapper\DeviceDynamicFieldModel
+
+        map_device_dynamic_field_from_entity_to_model:
+            paths: [ "%paths.base%/tests/Behat/features/InfoSource/Mapper/map-device-dynamic-field-from-entity-to-model.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\InfoSource\Mapper\MapDeviceDynamicFieldFromEntityToModel
+
+        info_source_query_repository:
+            paths: [ "%paths.base%/tests/Behat/features/InfoSource/QueryRepository/info-source-query-repository.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\InfoSource\QueryRepository\InfoSourceQueryRepository
+
+        device_doctrine_entity_mapper:
+            paths: [ "%paths.base%/tests/Behat/features/Device/Mapper/device-doctrine-entity-mapper.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Device\Doctrine\Mapper\DeviceDoctrineEntityMapper
+
+        update_text-input-validator:
+            paths: ["%paths.base%/tests/Behat/features/Item/Validator/UpdateTextInput/update-text-input-validator.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Validator\UpdateTextInput\UpdateTextInputValidator
+
+        update_list-item-parser:
+            paths: ["%paths.base%/tests/Behat/features/Item/Parser/ListItem/update-list-item-parser.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Parser\ListItem\UpdateListItemParser
+
+        item-entity-mapper:
+            paths: ["%paths.base%/tests/Behat/features/Item/Mapper/item-entity-mapper.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Mapper\ItemEntityMapper
+
+        item-query-repository:
+            paths: ["%paths.base%/tests/Behat/features/Item/Repository/item-query-repository.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Repository\ItemQueryRepository
+
+        update_list-input-validator:
+            paths: ["%paths.base%/tests/Behat/features/Item/Validator/UpdateSingleSelectList/update-single-select-list-validator.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Validator\UpdateSingleSelectList\UpdateSingleSelectListValidator
+
+        create_device_use_case:
+            paths: [ "%paths.base%/tests/Behat/features/Device/UseCase/create-device-use-case.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Device\UseCase\CreateDeviceUseCase
+
+        get_info_source_by_deviceId_adapter:
+            paths: [ "%paths.base%/tests/Behat/features/InfoSource/Adapter/get-info-source-by-deviceId-adapter.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\InfoSource\Adapter\GetInfoSourceByDeviceIdAdapter
+
+        update-list-item-by-command-repository:
+            paths: ["%paths.base%/tests/Behat/features/Item/Repository/update-list-item-by-command-repository.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Repository\UpdateListItemByCommandRepository
+
+        info_source_get_by_deviceId_parser:
+            paths: [ "%paths.base%/tests/Behat/features/InfoSource/Parser/get-info-source-by-deviceId-parser.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\InfoSource\Parser\GetInfoSourceByDeviceIdParser
+
+        info_source_get_by_deviceId_validator:
+            paths: [ "%paths.base%/tests/Behat/features/InfoSource/Validator/get-info-source-by-deviceId-validator.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\InfoSource\Validator\GetInfoSourceByDeviceIdValidator
+
+        map_header_by_entity:
+            paths: [ "%paths.base%/tests/Behat/features/Header/Mapper/map-header-by-entity.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Header\Mapper\MapHeaderByEntity
+
+        header_query_repository:
+            paths: [ "%paths.base%/tests/Behat/features/Header/Repository/header-query-repository.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Header\Repository\HeaderQueryRepository
+
+
+        delete-item-list-by-command-repository:
+            paths: ["%paths.base%/tests/Behat/features/Item/Repository/delete-item-list-by-command-repository.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Repository\DeleteItemListByCommandRepository
+
+        paragraph_delete_parser:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Parser/delete-paragraph-parser.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Parser\DeleteParagraphParser
+
+        paragraph_command_repository:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/CommandRepository/command-repository.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\CommandRepository\ParagraphCommandRepository
+
+        paragraph_delete_use_case:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/UseCase/delete-paragraph-use-case.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\UseCase\DeleteParagraphUseCase
+
+        paragraph_delete_validator:
+            paths: [ "%paths.base%/tests/Behat/features/Paragraph/Validator/delete-paragraph-validator.feature" ]
+            contexts:
+                - App\Tests\Behat\Context\Paragraph\Validator\DeleteParagraphValidator
+
+        create-device-information-item-parser:
+            paths: ["%paths.base%/tests/Behat/features/Item/Parser/DeviceInformationItem/create-device-information-item-parser.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Parser\DeviceInformationItem\CreateDeviceInformationItem
+
+        update-device-information-item-parser:
+            paths: ["%paths.base%/tests/Behat/features/Item/Parser/DeviceInformationItem/update-device-information-item-parser.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Parser\DeviceInformationItem\UpdateDeviceInformationItem
+
+        create-device-information-item-validator:
+            paths: ["%paths.base%/tests/Behat/features/Item/Validator/DeviceInformationItem/create-device-information-item-validator.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Validator\DeviceInformation\CreateDeviceInformationItemValidator
+
+        update-device-information-item-validator:
+            paths: ["%paths.base%/tests/Behat/features/Item/Validator/DeviceInformationItem/update-device-information-item-validator.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Validator\DeviceInformation\UpdateDeviceInformationItemValidator
+
+        picker-item-parser:
+            paths: ["%paths.base%/tests/Behat/features/Item/Parser/PickerItem/create-picker-item-parser.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Parser\PickerItem\CreatePickerItemParser
+
+        create-picker-item-validator:
+            paths: ["%paths.base%/tests/Behat/features/Item/Validator/CreatePickerItem/create-picker-item-validator.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Validator\CreatePickerItem\CreatePickerItemValidator
+
+        update-picker-item-parser:
+            paths: ["%paths.base%/tests/Behat/features/Item/Parser/PickerItem/update-picker-item-parser.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Parser\PickerItem\UpdatePickerItemParser
+
+        update-picker-item-validator:
+            paths: ["%paths.base%/tests/Behat/features/Item/Validator/UpdatePickerItem/update-picker-item-validator.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Validator\UpdatePickerItem\UpdatePickerItemValidator
+
+        change-item-position:
+            paths: ["%paths.base%/tests/Behat/features/Item/Repository/change-items-position.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Repository\ChangeItemPosition
+
+        change-item-position-parser:
+            paths: ["%paths.base%/tests/Behat/features/Item/Parser/ChangeItemPosition/change-item-position-parser.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Parser\ChangeItemPosition\ChangeItemPositionParser
+
+        change-item-position-validator:
+            paths: ["%paths.base%/tests/Behat/features/Item/Validator/ChangeItemPosition/change-item-position-validator.feature"]
+            contexts:
+                - App\Tests\Behat\Context\Item\Validator\ChangeItemPosition\ChangeItemPositionValidator
+
+    extensions:
+        FriendsOfBehat\SymfonyExtension: null
+        Allure\Behat\AllureFormatterExtension:
+            severity_key: "severity:"
+            ignored_tags: "tag_ignore"
+            issue_tag_prefix: "JIRA:"
+            test_id_tag_prefix: "BUG:"
+

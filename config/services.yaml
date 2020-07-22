@@ -1,0 +1,197 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    database_host: saas-m2-mysql
+    database_port: 3306
+    database_name: m2
+    database_user: root
+    database_password: root
+    mailer_user: test@gmail.com
+    s3_public_key: "%env(S3_PUBLIC_KEY)%"
+    s3_private_key: "%env(S3_PRIVATE_KEY)%"
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/*'
+        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+    App\Tests\:
+        resource: '../tests/*'
+        exclude: '../tests/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Infrastructure\Controller\:
+        resource: '../src/Infrastructure/Controller'
+        tags: ['controller.service_arguments']
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+    # UUID Param Converter
+    uuid_param_converter:
+        class: App\App\Component\UUID\UuidParamConverter
+        tags:
+            - { name: request.param_converter, priority: -2, converter: uuid_param_converter  }
+
+    # ServiceId Param Converter
+    service_id.param_converter:
+        class: App\Infrastructure\ParamConverter\Service\ServiceIdConverter
+        tags:
+            - { name: request.param_converter, priority: -2, converter: service_id.param_converter  }
+
+    # ReportTemplateId Param Converter
+    report_template_id.param_converter:
+        class: App\Infrastructure\ParamConverter\ReportTemplate\ReportTemplateIdConverter
+        tags:
+            - { name: request.param_converter, priority: -2, converter: report_template_id.param_converter  }
+
+    # SectionId Param Converter
+    section_id.param_converter:
+        class: App\Infrastructure\ParamConverter\Section\SectionIdConverter
+        tags:
+            - { name: request.param_converter, priority: -2, converter: section_id.param_converter  }
+
+    # DeviceId Param Converter
+    device_id.param_converter:
+        class: App\Infrastructure\ParamConverter\Device\DeviceIdConverter
+        tags:
+            - { name: request.param_converter, priority: -2, converter: device_id.param_converter  }
+
+    # ParagraphId Param Converter
+    paragraph_id.param_converter:
+        class: App\Infrastructure\ParamConverter\Paragraph\ParagraphIdConverter
+        tags:
+            - { name: request.param_converter, priority: -2, converter: paragraph_id.param_converter  }
+
+    # DictionaryId Param Converter
+    dictionary_id.param_converter:
+        class: App\Infrastructure\ParamConverter\Dictionary\DictionaryIdConverter
+        tags:
+            - { name: request.param_converter, priority: -2, converter: dictionary_id.param_converter  }
+
+    # EventBus handlers
+    App\App\Handler\Device\:
+        resource: '../src/App/Handler/Device'
+        tags: ['messenger.message_handler']
+
+    App\App\Handler\DeviceInstance\:
+        resource: '../src/App/Handler/DeviceInstance'
+        tags: ['messenger.message_handler']
+
+    App\App\Handler\ServiceInstance\:
+        resource: '../src/App/Handler/ServiceInstance'
+        tags: ['messenger.message_handler']
+
+    App\App\Handler\ReportTemplate\:
+        resource: '../src/App/Handler/ReportTemplate'
+        tags: ['messenger.message_handler']
+
+    App\App\Handler\Service\:
+        resource: '../src/App/Handler/Service'
+        tags: ['messenger.message_handler']
+
+    App\App\Handler\Section\:
+        resource: '../src/App/Handler/Section'
+        tags: ['messenger.message_handler']
+
+    App\App\Handler\Paragraph\:
+        resource: '../src/App/Handler/Paragraph'
+        tags: ['messenger.message_handler']
+
+    App\App\Handler\Facility\:
+        resource: '../src/App/Handler/Facility'
+        tags: ['messenger.message_handler']
+
+    App\App\Handler\Item\:
+        resource: '../src/App/Handler/Item'
+        tags: ['messenger.message_handler']
+
+
+    # Repository persistence
+    App\Core\Repository\Device\DeviceCommandRepositoryInterface: '@App\App\Repository\Device\DeviceCommandRepository'
+    App\Core\Repository\Device\DeviceQueryRepositoryInterface: '@App\App\Repository\Device\DeviceQueryRepository'
+
+    App\Core\Repository\ReportTemplate\ReportTemplateCommandRepositoryInterface: '@App\App\Repository\ReportTemplate\ReportTemplateCommandRepository'
+    App\Core\Repository\ReportTemplate\ReportTemplateQueryRepositoryInterface: '@App\App\Repository\ReportTemplate\ReportTemplateQueryRepository'
+
+    App\Core\Repository\ReportTemplate\ReportTemplateStatusQueryRepositoryInterface: '@App\App\Repository\ReportTemplate\ReportTemplateStatusQueryRepository'
+
+    App\Core\Repository\Service\ServiceCommandRepositoryInterface: '@App\App\Repository\Service\ServiceCommandRepository'
+    App\Core\Repository\Service\ServiceQueryRepositoryInterface: '@App\App\Repository\Service\ServiceQueryRepository'
+
+    App\Core\Repository\Section\SectionCommandRepositoryInterface: '@App\App\Repository\Section\SectionCommandRepository'
+    App\Core\Repository\Section\SectionQueryRepositoryInterface: '@App\App\Repository\Section\SectionQueryRepository'
+
+    App\Core\Repository\Paragraph\ParagraphCommandRepositoryInterface: '@App\App\Repository\Paragraph\ParagraphCommandRepository'
+    App\Core\Repository\Paragraph\ParagraphQueryRepositoryInterface: '@App\App\Repository\Paragraph\ParagraphQueryRepository'
+    App\Core\Repository\Paragraph\ParagraphFilterQueryRepositoryInterface: '@App\App\Repository\Paragraph\ParagraphFilterQueryRepository'
+    App\Core\Repository\Paragraph\StyleTemplateQueryRepositoryInterface: '@App\App\Repository\Paragraph\StyleTemplateQueryRepository'
+
+    App\Core\Repository\Facility\FacilityCommandRepositoryInterface: '@App\App\Repository\Facility\FacilityCommandRepository'
+    App\Core\Repository\Facility\FacilityQueryRepositoryInterface: '@App\App\Repository\Facility\FacilityQueryRepository'
+
+    App\Core\Repository\Item\ItemQueryRepositoryInterface: '@App\App\Repository\Item\ItemQueryRepository'
+
+    App\Core\Repository\Item\ItemType\ItemTypeQueryRepositoryInterface: '@App\App\Repository\Item\ItemType\ItemTypeQueryRepository'
+
+    App\Core\Repository\Item\ItemCategory\ItemCategoryQueryRepositoryInterface: '@App\App\Repository\Item\ItemCategory\ItemCategoryQueryRepository'
+
+    App\Core\Repository\User\UserCommandRepositoryInterface: '@App\App\Repository\User\UserCommandRepository'
+    App\Core\Repository\User\UserQueryRepositoryInterface: '@App\App\Repository\User\UserQueryRepository'
+
+    App\App\Service\FileStorage\FileStorageInterface: '@App\App\Service\FileStorage\S3Storage'
+    Predis\ClientInterface: '@snc_redis.default'
+
+    messanger_create_user_handler:
+        class: App\App\Handler\User\CreateUserCommandHandler
+
+    messanger_create_device_handler:
+        class: App\App\Handler\Device\CreateDeviceHandler
+
+    # ReportTemplate Mapper
+    api_report_template_mapper:
+        class: App\App\Mapper\ReportTemplate\CreateReportTemplateCommandMapper
+
+    # ReportTemplate parser
+    infrastructure_report_template_parser:
+        class: App\Infrastructure\Parser\ReportTemplate\CreateReportTemplateParser
+
+    infrastructure_archive_report_template_parser:
+        class: App\Infrastructure\Parser\ReportTemplate\ArchiveReportTemplateParser
+
+    doctrine_entity_report_template_status_mapper:
+        class: App\App\Mapper\ReportTemplate\DoctrineEntityReportTemplateStatusMapper
+
+    infrastructure_edit_report_template_parser:
+        class: App\Infrastructure\Parser\ReportTemplate\EditReportTemplateParser
+
+    api_edit_report_template_parser:
+        class: App\App\Command\ReportTemplate\Validator\EditReportTemplateValidator
+
+    # Service Mapper
+    doctrine_service_mapper:
+        class: App\App\Mapper\Service\DoctrineEntityServiceMapper
+
+    # User Mapper
+    doctrine_user_mapper:
+        class: App\App\Mapper\User\DoctrineEntityUserMapper
+
+    # Section
+    infrastructure_section_parser:
+        class: App\Infrastructure\Parser\Section\CreateSectionParser
+
+    api_section_parser:
+        class: App\App\Command\Section\Validator\CreateSectionValidator
+
+    core_paragraph_position_iterator:
+        class: App\Core\Service\Paragraph\PositionIterator

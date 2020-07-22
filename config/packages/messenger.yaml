@@ -1,0 +1,39 @@
+framework:
+    messenger:
+        failure_transport: failed
+
+        transports:
+            amqp_create_user:
+                dsn: "%env(MESSENGER_TRANSPORT_DSN)%[create_user]"
+                retry_strategy:
+                    max_retries: 1
+
+            amqp_create_device:
+                dsn: "%env(MESSENGER_TRANSPORT_DSN)%[create_device]"
+                retry_strategy:
+                    max_retries: 1
+
+            amqp_create_service:
+                dsn: "%env(MESSENGER_TRANSPORT_DSN)%[create_service]"
+                retry_strategy:
+                    max_retries: 1
+
+            amqp_create_device_instance:
+                dsn: "%env(MESSENGER_TRANSPORT_DSN)%[create_device_instance]"
+                retry_strategy:
+                    max_retries: 1
+
+            amqp_create_service_instance:
+                dsn: "%env(MESSENGER_TRANSPORT_DSN)%[create_service_instance]"
+                retry_strategy:
+                    max_retries: 1
+
+            failed:
+                dsn: "%env(MESSENGER_TRANSPORT_DSN)%[failed]"
+
+        routing:
+            App\App\Command\User\CreateUserCommand: amqp_create_user
+            App\App\Command\Device\CreateDeviceCommand: amqp_create_device
+            App\App\Command\Service\CreateServiceCommand: amqp_create_service
+            App\App\Command\DeviceInstance\CreateDeviceInstanceCommand: amqp_create_device_instance
+            App\App\Command\ServiceInstance\CreateServiceInstanceCommand: amqp_create_service_instance

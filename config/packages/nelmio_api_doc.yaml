@@ -1,0 +1,20 @@
+nelmio_api_doc:
+    areas: # to filter documented areas
+        default:
+            path_patterns:
+                - ^/api/(?!/doc$)
+            documentation:
+                info:
+                    title: M2
+                    description: This microservice for m2!
+                    version: v0.0.1
+                securityDefinitions:
+                    Bearer:
+                        type: apiKey
+                        description: 'Value: Bearer {jwt}'
+                        name: X-ACCESS-TOKEN
+                        in: header
+                    security:
+                        - Bearer: []
+                server:
+                    - http

@@ -1,0 +1,64 @@
+#controllers:
+#    resource: ../../src/Controller/
+#    type: annotation
+
+api_report_template:
+  resource: App\Infrastructure\Controller\ReportTemplateController
+  type: annotation
+  prefix: /api/v1/
+
+api_section:
+  resource: App\Infrastructure\Controller\SectionController
+  type: annotation
+  prefix: /api/v1/
+
+api_paragraph:
+  resource: App\Infrastructure\Controller\ParagraphController
+  type: annotation
+  prefix: /api/v1/
+
+api_device:
+  resource: App\Infrastructure\Controller\DeviceController
+  type: annotation
+  prefix: /api/v1/
+
+api_item_type:
+  resource: App\Infrastructure\Controller\Item\ItemTypeController
+  type: annotation
+  prefix: /api/v1/
+
+api_input_item:
+  resource: App\Infrastructure\Controller\Item\InputItemController
+  type: annotation
+  prefix: /api/v1/
+
+api_list_item:
+  resource: App\Infrastructure\Controller\Item\ListItemController
+  type: annotation
+  prefix: /api/v1/
+
+api_picture_item:
+  resource: App\Infrastructure\Controller\Item\PictureItemController
+  type: annotation
+  prefix: /api/v1/
+
+api_device_information_item:
+  resource: App\Infrastructure\Controller\Item\DeviceInformationItemController
+  type: annotation
+  prefix: /api/v1/
+
+
+api_picker_item:
+  resource: App\Infrastructure\Controller\Item\PickerItemController
+  type: annotation
+  prefix: /api/v1/
+
+api_base_item:
+  resource: App\Infrastructure\Controller\Item\ItemController
+  type: annotation
+  prefix: /api/v1/
+
+api_device_dynamic_field:
+  resource: App\Infrastructure\Controller\InfoSourceController
+  type: annotation
+  prefix: /api/v1/

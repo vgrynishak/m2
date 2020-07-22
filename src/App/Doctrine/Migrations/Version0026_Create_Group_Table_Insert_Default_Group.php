@@ -1,0 +1,37 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\App\Doctrine\Migrations;
+
+use Doctrine\DBAL\Schema\Schema;
+use Doctrine\Migrations\AbstractMigration;
+
+/**
+ * Auto-generated Migration: Please modify to your needs!
+ */
+final class Version0026_Create_Group_Table_Insert_Default_Group extends AbstractMigration
+{
+    public function getDescription() : string
+    {
+        return '';
+    }
+
+    public function up(Schema $schema) : void
+    {
+        // this up() migration is auto-generated, please modify it to your needs
+        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
+
+        $this->addSql('CREATE TABLE device_group (id VARCHAR(36) NOT NULL, name VARCHAR(255) NOT NULL, description VARCHAR(255) DEFAULT NULL, UNIQUE INDEX uuid_idx (id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql("INSERT INTO device_group (`id`, `name`, `description`) VALUES ('related_to_inspected_device','Related to inspected device', 'target device + all its descendants + all in direct ancestors')");
+        $this->addSql("INSERT INTO device_group (`id`, `name`, `description`) VALUES ('every_on_site_device','Every On site', ' all other devices EXCEPT for other devices for the same parent to target device')");
+    }
+
+    public function down(Schema $schema) : void
+    {
+        // this down() migration is auto-generated, please modify it to your needs
+        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
+
+        $this->addSql('DROP TABLE device_group');
+    }
+}
